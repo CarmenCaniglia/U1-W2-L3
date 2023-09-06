@@ -118,6 +118,7 @@ for (let i = 0; i < starWarsCharacters.length; i++) {
   }
 }
 console.log(characters);
+
 /* ESERCIZIO 3
   Seguendo i passaggi precedenti crea un nuovo array chiamato "femaleCharacters" e inserisci al suo interno tutti gli oggetti femminili.
 */
@@ -176,7 +177,10 @@ while (i < starWarsCharacters.length) {
   crewMass += starWarsCharacters[i].mass;
   i++;
 }
-console.log(crewMass);
+console.log("crewMass", crewMass);
+
+/* in questo caso la i non deve superare la lunghezza massima di starWarsCharacters --> importante andare ad aumentare la i, altrimenti si crea un loop infinito 
+
 
 /* ESERCIZIO 7
   Crea uno if/else statement per rivelare la tipologia di carico, utilizzando la massa totale, di un'ipotetica astronave contenente i personaggi dell'array "starWarsCharacters".
@@ -190,16 +194,16 @@ console.log(crewMass);
   Una volta fatto, modifica la massa di qualche elemento dell'equipaggio e vedi se riesci ad ottenere un messaggio diverso.
 */
 
-if (crewMass <= 500) {
-  console.log("Ship is under loaded");
-} else if (crewMass >= 500) {
-  console.log("Ship is half loaded");
-} else if (crewmass >= 700) {
-  console.log("Warning: Load is over 700");
-} else if (crewMass >= 900) {
-  console.log("Critical Load: Over 900");
-} else if (crewMass >= 1000) {
+if (crewMass > 1000) {
   console.log("DANGER! OVERLOAD ALERT: escape from ship now!");
+} else if (crewMass > 900) {
+  console.log("Critical Load: Over 900");
+} else if (crewmass > 700) {
+  console.log("Warning: Load is over 700");
+} else if (crewMass > 500) {
+  console.log("ship is half loaded");
+} else {
+  console.log("Ship is under loaded");
 }
 
 /* ESERCIZIO 8
@@ -215,8 +219,16 @@ console.log(starWarsCharacters);
   Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "characters" le stringhe corrispondenti a personaggi con lo stesso nome.
   Una volta fatto crea un console.log per controllare la proprietà length di "characters" prima e dopo l'operazione.
 */
-console.log(characters.length);
-
+for (let i = 0; i < femaleCharacters.length; i++) {
+  for (let j = 0; j < characters.length; j++) {
+    if (femaleCharacters[i].name === characters[j]) {
+      //rimuovere nome corrispondente da characters
+      console.log("elimino il personaggio");
+      characters.splice(j, 1);
+    }
+  }
+}
+console.log(characters);
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
@@ -225,3 +237,14 @@ let rValue = starWarsCharacters[random];
 console.log(rValue);
 //oppure
 console.log(starWarsCharacters[Math.ceil(Math.random() * 10) - 1]);
+
+const validIndex = Math.floor(Math.random() * 10);
+console.log(validIndex);
+
+const randomCharacter = starWarsCharacters.name[validIndex];
+
+console.log(
+  "mi chiamo",
+  +randomCharacter.name + " sono alto/a ",
+  randomCharacter.name
+);
